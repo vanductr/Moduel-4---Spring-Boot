@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product-List</title>
+</head>
+<body>
+    <a href="/product/add-new-product">Thêm mới Product</a>
+
+    <table border="10" cellspacing="10" cellpadding="10">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Sku</th>
+                <th>Tên Sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Mô tả</th>
+                <th colspan="2">Chức năng</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="product, loop : ${products}">
+                <td th:text="${loop.count}"></td>
+                <td th:text="${product.sku}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.getPriceFormat()}"></td>
+                <td th:text="${product.stock}"></td>
+                <td th:text="${product.description}"></td>
+                <td><a th:href="|/product/edit/${product.id}|">Chỉnh sửa</a></td>
+                <td><a th:href="|/product/delete/${product.id}|">Xoá</a></td>
+            </tr>
+        </tbody>
+
+    </table>
+</body>
+</html>

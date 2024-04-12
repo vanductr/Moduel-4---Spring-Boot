@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Product</title>
+</head>
+<body>
+    <h5><a href="/product/product-list">Quay trở lại Product - List</a></h5>
+
+    <h2>Thêm mới Sản phẩm</h2>
+
+    <form method="post" action="/product/do-add-new-product" th:object="${product}">
+        <table border="1" cellspacing="5" cellpadding="10">
+            <tr>
+                <td><label>Tên Sản phẩm</label></td>
+                <td><input type="text" th:field="*{name}"></td>
+            </tr>
+
+            <tr>
+                <td><label>Giá Sản phẩm</label></td>
+                <td><input type="text" th:field="*{price}"></td>
+            </tr>
+
+            <tr>
+                <td><label>Số lượng Sản phẩm</label></td>
+                <td><input type="text" th:field="*{stock}"></td>
+            </tr>
+
+            <tr>
+                <td><label>Mô tả Sản phẩm</label></td>
+                <td><input type="text" th:field="*{description}"></td>
+            </tr>
+
+            <tr>
+                <td><input type="submit" th:value="'Thêm Mới'"></td>
+            </tr>
+        </table>
+
+        <h2 th:if="${message}" th:text="${message}"></h2>
+    </form>
+</body>
+</html>
